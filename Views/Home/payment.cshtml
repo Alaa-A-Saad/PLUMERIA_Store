@@ -1,0 +1,140 @@
+﻿@{
+    ViewData["Title"] = "صفحة الدفع";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<!-- عرض المنتجات في السلة -->
+<div id="cart-items">
+    <h4>المنتجات في سلتك</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>المنتج</th>
+                <th>الكمية</th>
+                <th>السعر</th>
+                <th>الإجمالي</th>
+            </tr>
+        </thead>
+        <tbody id="cart-items-list">
+            <!-- سيتم ملأ هذا الجزء عبر JavaScript -->
+        </tbody>
+    </table>
+</div>
+
+<!-- نموذج الدفع -->
+<div id="payment-form">
+    <h4>معلومات الدفع</h4>
+    <form id="checkout-form" class="payment-form">
+        <div class="mb-3">
+            <label for="name" class="form-label">الاسم الكامل</label>
+            <input type="text" class="form-control" id="name" required />
+        </div>
+        <div class="mb-3">
+            <label for="card-number" class="form-label">رقم البطاقة</label>
+            <input type="text" class="form-control" id="card-number" required />
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">تاريخ الانتهاء</label>
+            <input type="text" class="form-control" id="address" required />
+        </div>
+        <div class="mb-3">
+            <label for="card-number" class="form-label">CVV</label>
+            <input type="text" class="form-control" id="cvv" required />
+        </div>
+        <!-- مكان عرض الرسالة -->
+        <!-- مكان عرض الرسالة -->
+        <div id="success-message" style="display: none; text-align: center; background-color: #FEC0BF; padding: 15px; margin-top: 20px; font-size: 1.2rem;">
+            شكراً لك! تم إتمام الطلب بنجاح.
+        </div>
+
+        <!-- الزر الذي سيقوم بتنفيذ عملية الدفع -->
+        <button type="submit" class="btn btn-primary" style="background-color: #FEC0BF; color: black; border: none;" onclick="completeOrder(event)">إتمام الدفع</button>
+
+    </form>
+</div>
+
+<style>
+    /* تحديد عرض النموذج */
+    .payment-form {
+        max-width: 600px; /* عرض النموذج الأصغر */
+        margin: 0 auto; /* محاذاة النموذج في الوسط */
+        padding: 20px;
+        background-color: #f9f9f9; /* لون خلفية لتحديد الحدود */
+        border-radius: 8px; /* حواف مستديرة */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* إضافة تأثير الظل */
+    }
+
+    /* تنسيق الـ labels */
+    .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1rem;
+    }
+
+    /* تنسيق الـ input fields */
+    .form-control {
+        width: 100%; /* تأكد من أن الحقول تشغل كامل العرض المتاح */
+        padding: 10px;
+        font-size: 1rem;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+    }
+
+    /* إضافة تنسيق للزر */
+    .btn {
+        width: 100%; /* جعل الزر يشغل العرض بالكامل */
+        padding: 10px;
+        font-size: 1.1rem;
+        border-radius: 4px;
+    }
+
+    /* تحديد تنسيق المسافات بين العناصر */
+    .mb-3 {
+        margin-bottom: 1.5rem;
+    }
+</style>
+
+<script>
+        function displayCartItems() {
+        // استرجاع السلة من localStorage
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // التحقق من أن السلة تحتوي على منتجات
+        if (cart.length === 0) {
+            document.getElementById('cart-items').innerHTML = '<p>السلة فارغة</p>';
+            return;
+        }
+
+        let cartItemsList = document.getElementById('cart-items-list');
+        cartItemsList.innerHTML = ''; // مسح محتويات الجدول الحالي
+
+        // إضافة المنتجات إلى الجدول
+        let totalPrice = 0; // إجمالي السعر
+
+        cart.forEach(item => {
+            // إضافة صف جديد لكل منتج
+            let row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.name}</td>
+                <td>${item.quantity}</td>
+                <td>${item.price} ريال</td>
+                <td>${(item.price * item.quantity).toFixed(2)} ريال</td>
+            `;
+            cartItemsList.appendChild(row);
+
+            // حساب إجمالي السعر
+            totalPrice += item.price * item.quantity;
+        });
+
+        // عرض إجمالي السعر في صفحة الدفع
+        let totalRow = document.createElement('tr');
+        totalRow.innerHTML = `
+            <td colspan="3" class="text-end">الإجمالي:</td>
+            <td>${totalPrice.toFixed(2)} ريال</td>
+        `;
+        cartItemsList.appendChild(totalRow);
+    }
+
+    document.addEventListener('DOMContentLoaded', displayCartItems);
+</script>

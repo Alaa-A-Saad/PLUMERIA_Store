@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ProductsCate>
+@{
+	Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+}
+
+<div class="modal" tabindex="-1" id="del">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">تاكيد الحذف </h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p>هل أنت متأكد أنك تريد حذف هذي الفئة؟</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">الغاء الامر</button>
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="confirm_delete1()">حذف</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row mt-5">
+		<div class="col">
+			<div class="card mt-5">
+				<div class="card-body">
+					<form asp-action="CreatNewProductsCate" method="post">
+						<div class="row">
+							<div class="col">
+								<label class="form-label">اسم فئة المنتج </label>
+								<input type="text" name="Name" class="form-control" />
+							</div>
+						</div>
+						<div class="row mt-3">
+							<div class="col text-center">
+								<button type="submit" class="btn-hover color-1"> حفظ</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+ <div id="catogconta">
+	@Html.Partial("_partial/productscate", Model) 
+
+ </div>

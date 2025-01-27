@@ -1,0 +1,106 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* ÅÒÇáÉ ÇáåæÇãÔ (margins) æÇáÍÔæÇÊ (paddings) ãä ÇáÜ body æ html */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* ÅÒÇáÉ ÇáãÓÇİÉ Èíä ÇáÔÑíØ æÇáãÍÊæì */
+header {
+    margin-bottom: 0; /* ÅÒÇáÉ ÇáãÓÇİÉ ÇáÓİáíÉ ÈÚÏ ÇáÔÑíØ */
+}
+
+/* ÇáÊÃßÏ ãä ÅÒÇáÉ ÇáåæÇãÔ ãä ÇáãÍÊæì */
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.navbar {
+    margin-bottom: 0; /* ÅÒÇáÉ ÇáãÓÇİÉ ÃÓİá ÇáÔÑíØ */
+}
+
+/* íãßä ÊÚÏíá ÇáÍæÇİ ÇáÚáíÇ áÊßæä ÕİÑÇğ */
+.container-fluid {
+    margin-top: 0;
+}
+
+    /* íãßä ÊÚÏíá ÇáÎáİíÉ áÊßæä ããÊÏÉ */
+    .container-fluid > .text-center {
+        padding-top: 0;
+    }
+
+body {
+    font-family: 'AlMarai';
+}
+
+.accordion {
+    margin-bottom: 50px; /* ÅÖÇİÉ åÇãÔ ÃÓİá ÇáÃÓÆáÉ */
+}
+
+    /* ÅÒÇáÉ ÇáÅØÇÑ ÇáÃÒÑŞ æÇáÙá ÚäÏ ÇáÊÑßíÒ Úáì ÇáÃÒÑÇÑ ÏÇÎá ÇáÜ Accordion */
+    .accordion .btn-link:focus {
+        outline: none; /* ÅÒÇáÉ ÇáÅØÇÑ */
+        box-shadow: none; /* ÅÒÇáÉ ÇáÙá */
+        border: none; /* ÅÒÇáÉ ÇáÍÏæÏ ÅĞÇ ßÇäÊ ãæÌæÏÉ */
+    }
+
+/* ÇáåíÏÑ */
+/* ÇáåíÏÑ */
+.header-background {
+    background-size: cover; /* áÊÛØíÉ ÇáÎáİíÉ ßÇãá ÇáÚäÕÑ */
+    background-position: center; /* áÊæÓíØ ÇáÕæÑÉ */
+    width: 100%; /* ÊÛØí ßÇãá ÚÑÖ ÇáÔÇÔÉ */
+    height: 300px; /* ÊÚííä ÇÑÊİÇÚ ÇáåíÏÑ */
+    margin-top: 0; /* ÅÒÇáÉ Ãí ãÓÇİÉ Èíä ÇáÜ Navbar æÇáÕæÑÉ */
+}
+
+/* ÅÒÇáÉ ÇáåÇãÔ æÇáÍÔæÉ ãä ÇáÜ Navbar */
+.navbar {
+    margin: 0;
+    padding: 0;
+    position: relative; /* ÇáÜ Navbar íÈŞì İí ãßÇäå ÇáÚÇÏí */
+    z-index: 2; /* íÌÚá ÇáÜ Navbar İí ÇáÃÚáì */
+}
+
+/* ãÍÊæì ÇáÕİÍÉ (ÇáãÍÊæì ÏÇÎá @RenderBody()) */
+.main-content {
+    padding: 20px;
+}
+
+
+
+
+

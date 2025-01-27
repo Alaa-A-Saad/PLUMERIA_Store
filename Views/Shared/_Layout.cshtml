@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] P L U M E R I A</title>
+    <script type="importmap"></script>
+    <link rel="icon" type="image/x-icon" href="~/img/Logo.png" />
+    <link href="https://fonts.googleapis.com/css?family=Almarai" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/P_L_U_M_E_R_I_A.styles.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="~/js/site.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="~/img/Logo.png" alt="" width="60" height="60" class="rounded" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="skincare"> العناية بالبشرة </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="candles"> الشموع </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="gifts"> الهدايا </a>
+                    </li>
+                </ul>
+            </div>
+            <form class="d-flex ms-auto">
+                <button class="btn btn-outline-dark" type="button" onclick="goToPaymentPage()">
+                    <i class="bi-cart-fill me-1"></i>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart-badge">0</span>
+                </button>
+            </form>
+
+        </div>
+    </nav>
+
+    <header>
+        <div class="header-background"
+             style="background-image: url('/img/header.png')">
+        </div>
+    </header>
+
+    <div class="main-content">
+        @RenderBody() <!-- المحتوى الرئيسي هنا -->
+    </div>
+
+    <footer class="text-end" style="background-color: #FCD5C2; color: #555" dir="rtl">
+  <div class="container p-4 pb-0">
+      <section>
+          <!--Grid row-->
+          <div class="row">
+              <!-- Grid column -->
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold" style=" color: #000">
+                      P L U M E R I A
+                  </h6>
+                  <p >موقع يقدم منتجات العناية الشخصية الطبيعية مثل الصابون والشموع، جميع منتجاتنا تتميز بالجودة العالية والطبيعية.</p>
+              </div>
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold" style=" color: #000">تواصل معنا</h6>
+                  <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+                  <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                  <p><i class="bi bi-whatsapp mr-3"></i> + 01 234 567 89</p>
+              </div>
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                        <h6 class="text-uppercase mb-4 font-weight-bold" style=" color: #000">طرق الدفع</h6>
+                        <!-- visa -->
+                        <div class="btn btn-floating m-1" style="background-color: #fff; border: none;">
+                            <img src="~/img/294654_visa_icon.png" alt="" style="width: 30px; height: 25px;" />
+                        </div>
+                        <!-- apple pay -->
+                        <div class="btn btn-floating m-1" style="background-color: #fff; border: none;">
+                            <img src="~/img/Apple_Pay.png" alt="" style="width: 30px; height: 25px;" />
+                        </div>
+                        <!-- mada -->
+                        <div class="btn btn-floating m-1" style="background-color: #fff; border: none;">
+                            <img src="~/img/Mada_Logo.png" alt="" style="width: 25px; height: 20px;" />
+                        </div>
+                        <!-- tappy -->
+                        <div class="btn btn-floating m-1" style="background-color: #fff; border: none;">
+                            <img src="~/img/tappy.jpg" alt="" style="width: 25px; height: 20px;" />
+                        </div>
+                    </div>
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3"><h6 class="text-uppercase mb-4 font-weight-bold" style=" color: #000">تابعنا</h6>
+                        <!-- Facebook -->
+                        <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998; border: none;" href="https://www.instagram.com/plumeria.ksa/" role="button">
+                           <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <!-- Twitter -->
+                        <a class="btn btn-primary btn-floating m-1" style="background-color: #000; border: none;" href="https://www.instagram.com/plumeria.ksa/" role="button">
+                            <i class=" bi bi-twitter-x"></i>
+                        </a>
+                        <!-- Instagram -->
+                        <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac; border: none;" href="https://www.instagram.com/plumeria.ksa/" role="button">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+          </div>
+          <!--Grid row-->
+      </section>
+  </div>
+  <!-- Grid container -->
+            <div class="text-center p-3" style="background-color: #FEC0BF">
+              © 2025 Copyright PLUMERIA.com </div> 
+        </footer>
+        <!-- Footer -->
+    <!-- End of .container -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

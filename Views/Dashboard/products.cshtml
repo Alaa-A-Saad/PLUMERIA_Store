@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Products>
+@{
+	Layout = "~/Views/Shared/_LayoutsAdmin.cshtml";
+	var getdata = ViewBag.getdata;
+	var getdatapro = ViewBag.getdatapro;
+}
+
+<div class="container">
+	<div class="row mt-5">
+		<div class="col">
+			<div class="card mt-5">
+				<div class="card-body">
+					<form asp-action="CreatNewProducts" method="post" enctype="multipart/form-data">
+						<div class="row">
+							<div class="col">
+								<label class="form-label">اسم المنتج</label>
+								<input type="text" name="Name" class="form-control" />
+							</div>
+							<div class="col">
+								<label class="form-label">فئة المنتج </label>
+								<select class="form-select" name="ProductsCate_id">
+									<option> اختر البيانات</option>
+									@foreach (var item in getdata)
+									{
+										<option value=@item.Id>@item.Name</option>
+
+									}
+								</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label class="form-label"> وصف المنتج</label>
+								<input type="text" name="Description" class="form-control" />
+							</div>
+							<div class="col">
+								<label class="form-label">سعر المنتج</label>
+								<input type="text" name="Price" class="form-control" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label class="form-label">صورة المنتج </label>
+								<input type="file" name="photo" class="form-control" />
+							</div>
+						</div>
+						<div class="row mt-3">
+							<div class="col text-center">
+								<button type="submit" class="btn-hover color-1"> حفظ</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row mt-5">
+	<div class="col">
+		<div class="card">
+			<div class="card-body">
+				<table class="text-center">
+					<thead>
+						<tr>
+							<td>رقم المنتج</td>
+							<td>اسم المنتج</td>
+							<td>فئة المنتج</td>
+							<td>وصف المنتج</td>
+							<td>سعر المنتج</td>
+							<td>صورة المنتج</td>
+							<td class="text-center" colspan="3">اجراء</td>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in getdatapro)
+						{
+							<tr>
+								<td>@item.Id</td>
+								<td>@item.Name</td>
+								<td>@item.Categores</td>
+								<td>@item.Description</td>
+								<td>@item.Price</td>
+								<td><img src="/img/prod/@item.Images" width="60" height="60" class="rounded-circle" /></td>
+								<td>
+									<form asp-action="DeletProducts" asp-route-id="@item.Id" method="post" onsubmit="return confirm('هل أنت متأكد أنك تريد حذف هذا المنتج؟');">
+										<button type="submit" class="btn btn-link p-0">
+											<i class="fa fa-fw fa-trash text-danger" aria-hidden="true"></i>
+										</button>
+									</form>
+								</td>
+								<td>
+									<i class="fas fa-pencil-alt" aria-hidden="true"></i>
+								</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Products>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        @foreach (var items in Model)
+        {
+            <div class="col mb-5">
+                <div class="card h-100">
+                    <img class="card-img-top" src="/img/prod/@items.Images" alt="@items.Name" />
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <h5 class="fw-bolder">@items.Name</h5>
+                            <p>@items.Description</p>
+                            <p>@items.Price ريال</p>
+                        </div>
+                    </div>
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <!-- تمرير بيانات المنتج (ID، الاسم، السعر) إلى دالة addToCart -->
+                            <a class="btn btn-outline-dark mt-auto"
+                               href="#"
+                               onclick="addToCart(@items.Id, '@items.Name', @items.Price)">أضف للسلة</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        };
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-end"> الأسئلة الشائعة</h2>
+    <div class="accordion" id="faqAccordion">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none; color: black;">
+                        ما هي فوائد الصابون الطبيعي؟
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                <div class="card-body">
+                    الصابون الطبيعي يحتوي على مكونات طبيعية مثل الزيوت النباتية والعسل، مما يساعد في ترطيب البشرة وتنظيفها بلطف دون أن يسبب جفافًا أو تهيجًا.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="text-decoration: none; color: black;">
+                        كيف يمكنني استخدام الشموع الطبيعية بشكل آمن؟
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                <div class="card-body">
+                    للحصول على أفضل تجربة من الشموع الطبيعية، تأكد من قص فتيل الشمعة إلى حوالي 5 مم قبل إشعالها، ولا تترك الشمعة مشتعلة لمدة تزيد عن 4 ساعات.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="text-decoration: none; color: black;">
+                        ما هي المكونات الطبيعية التي يحتوي عليها صابونكم؟
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                <div class="card-body">
+                    يحتوي صابوننا على مكونات طبيعية مثل زيت الزيتون، زيت جوز الهند، زيت اللوز، وزبدة الشيا، بالإضافة إلى مكونات عطرية طبيعية مثل الزيوت الأساسية.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" style="text-decoration: none; color: black;">
+                        كيف يجب علي تخزين الشموع الطبيعية؟
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
+                <div class="card-body">
+                    يفضل تخزين الشموع في مكان بارد وجاف بعيدًا عن أشعة الشمس المباشرة. كما يجب إبقاء الشموع في مكان آمن بعيدًا عن الأشياء القابلة للاشتعال.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingFive">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive" style="text-decoration: none; color: black;">
+                        كم يستغرق وقت شحن الطلبات؟
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#faqAccordion">
+                <div class="card-body">
+                    عادةً ما يستغرق الشحن بين 3-5 أيام عمل داخل المملكة. قد يختلف الوقت بناءً على مكان وجهة الشحن.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingSix">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix" style="text-decoration: none; color: black;">
+                        هل يمكنني إرجاع المنتجات؟
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#faqAccordion">
+                <div class="card-body">
+                    نعم، يمكنك إرجاع المنتجات خلال 14 يومًا من تاريخ استلامها بشرط أن تكون المنتجات في حالتها الأصلية وغير مستخدمة.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
