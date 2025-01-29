@@ -66,6 +66,6 @@ function completeOrder(event) {
 
     // إعادة التوجيه إلى الصفحة الرئيسية بعد 2 ثانية
     setTimeout(function () {
-        window.location.href = "/"; // إعادة التوجيه إلى الصفحة الرئيسية
+        window.location.href = "index"; // إعادة التوجيه إلى الصفحة الرئيسية
     }, 2000); // تأخير 2 ثانية
 }
